@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DapperTeste.Model
 {
-    public class UserCelsModel
+    public class UsrCel
     {
         public string UsrNome { get; set; }
         public string UsrSbnome { get; set; }
         public string UsrEmail { get; set; }
-        public CelsModel UsrCel { get; set; }
+        public List<CelsModel> UsrCels { get; set; }
     }
 }

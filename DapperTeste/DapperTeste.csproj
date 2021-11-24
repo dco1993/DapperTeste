@@ -56,6 +56,7 @@
     <Compile Include="DataManager.cs" />
     <Compile Include="Model\CelsModel.cs" />
     <Compile Include="Model\UserCelsModel.cs" />
+    <Compile Include="Model\UsrCel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

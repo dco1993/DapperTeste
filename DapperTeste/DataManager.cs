@@ -32,7 +32,7 @@ namespace DapperTeste
             {
                 return cnn.Query<UserCelsModel, CelsModel, UserCelsModel>(sql, map:(usuario, celular) =>
                 {
-                    usuario.UsrCels = celular;
+                    usuario.UsrCel = celular;
                     return usuario;
                 },
                 splitOn: "UsrNome, CelDdd").ToList();

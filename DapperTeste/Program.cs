@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using DapperTeste.Model;
+using Newtonsoft.Json;
 
 namespace DapperTeste
 {
@@ -14,20 +15,31 @@ namespace DapperTeste
         static void Main(string[] args)
         {
             string sql = $"exec spUserCels_GetById {1}";
+
             List<UserCelsModel> data = DataManager.GetUsersCel(sql);
 
-            Console.WriteLine(data[0].UsrNome);
-            Console.WriteLine(data[0].UsrSbnome);
-            Console.WriteLine(data[0].UsrEmail);
+            UsrCel usrcel = new UsrCel();
 
-            int cont = 0; 
+            List<CelsModel> cels = new List<CelsModel>();
+
+            usrcel.UsrNome = data[0].UsrNome;
+            usrcel.UsrSbnome = data[0].UsrSbnome;
+            usrcel.UsrEmail = data[0].UsrEmail;
 
             foreach (UserCelsModel user in data)
             {
-                cont++;
-                Console.WriteLine($"-----> Cel({cont}): ({user.UsrCels.CelDdd}) {user.UsrCels.CelNum}");
+                cels.Add(new CelsModel
+                {
+                    CelDdd = user.UsrCel.CelDdd,
+                    CelNum = user.UsrCel.CelNum
+                });
+
+                usrcel.UsrCels = cels;
             }
 
+            string json = JsonConvert.SerializeObject(usrcel);
+
+            Console.WriteLine(json);
         
         }
     }
